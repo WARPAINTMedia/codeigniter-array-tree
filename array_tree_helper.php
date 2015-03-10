@@ -13,16 +13,16 @@
 
 /**
  * Take a flat array and return a nested array based on the keys set
- * @param  array  $arr           the input array
- * @param  string $main_index   the key to compare
- * @param  string $parent_index the parent key
- * @param  string $child_index  the key to assign to the children array
- * @return array                the nested array
+ * @param  array   $arr           input array
+ * @param  string  $main_index    key to compare
+ * @param  string  $parent_index  parent key
+ * @param  string  $child_index   key to assign to the children array
+ * @return array                  nested array
  */
 if ( ! function_exists('array_tree'))
 {
 
-  function array_tree($arr, $main_index, $parent_index, string $child_index) {
+  function array_tree($arr, $main_index, $parent_index, $child_index) {
 
     $new = array();
     foreach ($arr as $a){
