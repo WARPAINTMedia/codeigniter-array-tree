@@ -49,7 +49,7 @@ $arr = array(
   )
 );
 
-// items wich match their `id` to `parentid` are nested in a `children` array
+// items which match their `id` to `parentid` are nested in a `children` array
 $results = array_tree($arr, 'id', 'parentid', 'children');
 print_r($results);
 ```
