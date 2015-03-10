@@ -27,12 +27,29 @@ Input Code
 
 ```php
 $arr = array(
-  array('id'=>100, 'parentid'=>0, 'name'=>'a'),
-  array('id'=>101, 'parentid'=>100, 'name'=>'a'),
-  array('id'=>102, 'parentid'=>101, 'name'=>'a'),
-  array('id'=>103, 'parentid'=>101, 'name'=>'a'),
+  array(
+    'id' => 100,
+    'parentid' => 0,
+    'name' => 'a'
+  ),
+  array(
+    'id' => 101,
+    'parentid' => 100,
+    'name' => 'a'
+  ),
+  array(
+    'id' => 102,
+    'parentid' => 101,
+    'name' => 'a'
+  ),
+  array(
+    'id' => 103,
+    'parentid' => 101,
+    'name' => 'a'
+  )
 );
 
+// items wich match their `id` to `parentid` are nested in a `children` array
 $results = array_tree($arr, 'id', 'parentid', 'children');
 print_r($results);
 ```
