@@ -12,32 +12,36 @@
  */
 
 /**
- * array_tree Helper
- *
- * Outputs the given array as a nested array
+ * Take a flat array and return a nested array based on the keys set
+ * @param  array  $arr           the input array
+ * @param  string $main_index   the key to compare
+ * @param  string $parent_index the parent key
+ * @param  string $child_index  the key to assign to the children array
+ * @return array                the nested array
  */
 if ( ! function_exists('array_tree'))
 {
 
-  function array_tree($arr) {
+  function array_tree($arr, $main_index, $parent_index, string $child_index) {
 
     $new = array();
     foreach ($arr as $a){
-      $new[(int)$a['parent']][] = $a;
+      $new[$a[$parent_index]][] = $a;
     }
 
-    function create_tree(&$list, $parent){
+    // we create a closure in order to be recursive
+    function create_tree(&$list, $parent, $i, $c) {
       $tree = array();
       foreach ($parent as $k => $l){
-        if(isset($list[(int)$l['id']])){
-          $l['children'] = create_tree($list, $list[(int)$l['id']]);
+        if(isset($list[$l[$i]])){
+          $l[$c] = create_tree($list, $list[$l[$i]], $i, $c);
         }
         $tree[] = $l;
       }
       return $tree;
     }
 
-    return create_tree($new, $new[0]);
+    return create_tree($new, $new[0], $main_index, $child_index);
   }
 
 }
